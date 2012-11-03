@@ -39,13 +39,13 @@ x32dbg: hex2bin.cpp bin2hex.cpp Makefile
 x32:    hex2bin.cpp bin2hex.cpp Makefile
 	@if [ ! -e bin ]; then    (mkdir bin;)     fi
 
-	$(CXX) hex2bin.cpp -c -o bin/hex2bin.o -D'PROG_NAME="$(PROG_NAME1)"' -D'PROG_VERSION="$(PROG_VERSION1)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME1)-$(@)-$(PROG_VERSION1)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
-	$(LN) bin/hex2bin.o -o bin/$(PROG_NAME1)-$(@)-$(PROG_VERSION1) $(LFLAGS_x32REL)
-	ln -sf $(PROG_NAME1)-$(@)-$(PROG_VERSION1) bin/$(PROG_NAME1)
+	@$(CXX) hex2bin.cpp -c -o bin/hex2bin.o -D'PROG_NAME="$(PROG_NAME1)"' -D'PROG_VERSION="$(PROG_VERSION1)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME1)-$(@)-$(PROG_VERSION1)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
+	@$(LN) bin/hex2bin.o -o bin/$(PROG_NAME1)-$(@)-$(PROG_VERSION1) $(LFLAGS_x32REL)
+	@ln -sf $(PROG_NAME1)-$(@)-$(PROG_VERSION1) bin/$(PROG_NAME1)
 
-	$(CXX) bin2hex.cpp -c -o bin/bin2hex.o -D'PROG_NAME="$(PROG_NAME2)"' -D'PROG_VERSION="$(PROG_VERSION2)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME2)-$(@)-$(PROG_VERSION2)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
-	$(LN) bin/bin2hex.o -o bin/$(PROG_NAME2)-$(@)-$(PROG_VERSION2) $(LFLAGS_x32REL)
-	ln -sf $(PROG_NAME2)-$(@)-$(PROG_VERSION2) bin/$(PROG_NAME2)
+	@$(CXX) bin2hex.cpp -c -o bin/bin2hex.o -D'PROG_NAME="$(PROG_NAME2)"' -D'PROG_VERSION="$(PROG_VERSION2)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME2)-$(@)-$(PROG_VERSION2)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
+	@$(LN) bin/bin2hex.o -o bin/$(PROG_NAME2)-$(@)-$(PROG_VERSION2) $(LFLAGS_x32REL)
+	@ln -sf $(PROG_NAME2)-$(@)-$(PROG_VERSION2) bin/$(PROG_NAME2)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 x64dbg: hex2bin.cpp bin2hex.cpp Makefile
 	@if [ ! -e bin ]; then    (mkdir bin;)     fi
