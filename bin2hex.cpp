@@ -44,7 +44,12 @@ int main(int argc, char* argv[])
 		if (ch == EOF) break;
 
 //		printf ("%02X", (unsigned char)(ch));
-		printf (bin2hex_table[(unsigned char)(ch)]);
+//		printf (bin2hex_table[(unsigned char)(ch)]);
+
+		const char *p = bin2hex_table[(unsigned char)(ch)];
+		putchar(*p);
+		p++;
+		putchar(*p);
 	}
 	fflush(stdout);
 
