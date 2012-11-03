@@ -39,4 +39,4 @@ rm "${TMP3}";
 
 echo "ok";
 
-exit 1;
+exit 0;
