@@ -10,7 +10,7 @@ int main(int argc, char* argv[])
 {
 	if (argc != 1)
 	{
-		printf ("example: echo \"hello world\" | %s\n", argv[0]);
+		printf("example: echo \"hello world\" | %s\n", argv[0]);
 		exit(1);
 	}
 
@@ -38,13 +38,13 @@ int main(int argc, char* argv[])
 
 
 // read from stdin, convert to hex, write to stdout
-	for(;;)
+	for (;;)
 	{
 		int ch = getchar();
 		if (ch == EOF) break;
 
-//		printf ("%02X", (unsigned char)(ch));
-//		printf (bin2hex_table[(unsigned char)(ch)]);
+//		printf("%02X", (unsigned char)(ch));
+//		printf(bin2hex_table[(unsigned char)(ch)]);
 
 		const char *p = bin2hex_table[(unsigned char)(ch)];
 		putchar(*p);

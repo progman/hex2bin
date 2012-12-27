@@ -76,7 +76,7 @@ int main(int argc, char* argv[])
 
 
 // read from stdin, convert to bin, write to stdout
-	for(;;)
+	for (;;)
 	{
 		int ch1 = getchar();
 		if (ch1 == EOF) break;
@@ -86,7 +86,7 @@ int main(int argc, char* argv[])
 
 		unsigned char ch = (char)((hex2bin((unsigned char)ch1) * 16) + hex2bin((unsigned char)ch2));
 
-		printf ("%c", ch);
+		printf("%c", ch);
 	}
 	fflush(stdout);
 
