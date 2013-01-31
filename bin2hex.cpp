@@ -63,7 +63,9 @@ int main(int argc, char* argv[])
 {
 	if (argc != 1)
 	{
+		printf("%s\t(%s)\n", PROG_FULL_NAME, PROG_URL);
 		printf("example: echo \"hello world\" | %s\n", argv[0]);
+		printf("\n");
 		return 1;
 	}
 

@@ -37,7 +37,9 @@ int main(int argc, char* argv[])
 {
 	if (argc != 1)
 	{
+		printf("%s\t(%s)\n", PROG_FULL_NAME, PROG_URL);
 		printf("example: echo \"68656c6c6f206675636b696e6720776f726c64210a\" | %s\n", argv[0]);
+		printf("\n");
 		return 1;
 	}
 
@@ -53,7 +55,7 @@ int main(int argc, char* argv[])
 
 		uint8_t ch = (uint8_t)((hex2bin((uint8_t)ch1) << 4) + hex2bin((uint8_t)ch2));
 
-		printf("%c", ch);
+		putchar(ch);
 	}
 	fflush(stdout);
 
