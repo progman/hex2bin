@@ -2,5 +2,6 @@ Convert hex2bin and bin2hex
 
 
 1) Get this : git clone git://github.com/progman/hex2bin
-2) Use this : echo '0D0A' | hex2bin > file.bin
-3) Enjoy!
+2) Make this: git submodule init; git submodule update; make
+3) Use this : echo '0D0A' | hex2bin > file.bin
+4) Enjoy!
