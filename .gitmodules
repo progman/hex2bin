@@ -1,3 +1,3 @@
 [submodule "submodule/lib_cpp"]
 	path = submodule/lib_cpp
-	url = git@github.com:progman/lib_cpp.git
+	url = https://github.com:progman/lib_cpp.git
