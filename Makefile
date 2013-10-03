@@ -24,51 +24,45 @@ help:
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 x32dbg: Makefile $(SOURCE_LIST) $(HEADER_LIST)
 	@if [ ! -e bin ]; then    (mkdir bin;)     fi
-
 	@$(CC) submodule/lib_cpp/lib_cpp.cpp -o bin/lib_cpp.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32DBG)
+	@$(CC) hex2bin.cpp                   -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32DBG)
 
-	@$(CC) hex2bin.cpp -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32DBG)
 	@$(LN) bin/lib_cpp.o bin/hex2bin.o -o bin/$(PROG_NAME)-$(@)-$(PROG_VERSION) $(LFLAGS_x32DBG)
 	@ln -sf $(PROG_NAME)-$(@)-$(PROG_VERSION) bin/$(PROG_NAME)
 	@objdump -Dslx bin/$(PROG_NAME)-$(@)-$(PROG_VERSION) > bin/$(PROG_NAME)-$(@)-$(PROG_VERSION).dump;
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 x32test: Makefile $(SOURCE_LIST) $(HEADER_LIST)
 	@if [ ! -e bin ]; then    (mkdir bin;)     fi
-
 	@clang --analyze submodule/lib_cpp/lib_cpp.cpp -o bin/lib_cpp.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
 	@clang --analyze hex2bin.cpp -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 x32: Makefile $(SOURCE_LIST) $(HEADER_LIST)
 	@if [ ! -e bin ]; then    (mkdir bin;)     fi
-
 	@$(CC) submodule/lib_cpp/lib_cpp.cpp -o bin/lib_cpp.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
+	@$(CC) hex2bin.cpp                   -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
 
-	@$(CC) hex2bin.cpp -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x32REL)
 	@$(LN) bin/lib_cpp.o bin/hex2bin.o -o bin/$(PROG_NAME)-$(@)-$(PROG_VERSION) $(LFLAGS_x32REL)
 	@ln -sf $(PROG_NAME)-$(@)-$(PROG_VERSION) bin/$(PROG_NAME)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 x64dbg: Makefile $(SOURCE_LIST) $(HEADER_LIST)
 	@if [ ! -e bin ]; then    (mkdir bin;)     fi
-
 	@$(CC) submodule/lib_cpp/lib_cpp.cpp -o bin/lib_cpp.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x64DBG)
+	@$(CC) hex2bin.cpp                   -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x64DBG)
 
-	@$(CC) hex2bin.cpp -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x64DBG)
 	@$(LN) bin/lib_cpp.o bin/hex2bin.o -o bin/$(PROG_NAME)-$(@)-$(PROG_VERSION) $(LFLAGS_x64DBG)
 	@ln -sf $(PROG_NAME)-$(@)-$(PROG_VERSION) bin/$(PROG_NAME)
 	@objdump -Dslx bin/$(PROG_NAME)-$(@)-$(PROG_VERSION) > bin/$(PROG_NAME)-$(@)-$(PROG_VERSION).dump;
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 x64test: Makefile $(SOURCE_LIST) $(HEADER_LIST)
 	@if [ ! -e bin ]; then    (mkdir bin;)     fi
-
 	@clang --analyze submodule/lib_cpp/lib_cpp.cpp -o bin/lib_cpp.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x64REL)
 	@clang --analyze hex2bin.cpp -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x64REL)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
 x64: Makefile $(SOURCE_LIST) $(HEADER_LIST)
 	@if [ ! -e bin ]; then    (mkdir bin;)     fi
-
 	@$(CC) submodule/lib_cpp/lib_cpp.cpp -o bin/lib_cpp.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x64REL)
+	@$(CC) hex2bin.cpp                   -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x64REL)
 
-	@$(CC) hex2bin.cpp -o bin/hex2bin.o -c -D'PROG_NAME="$(PROG_NAME)"' -D'PROG_VERSION="$(PROG_VERSION)"' -D'PROG_TARGET="$(@)"' -D'PROG_FULL_NAME="$(PROG_NAME)-$(@)-$(PROG_VERSION)"' -D'PROG_URL="$(PROG_URL)"' $(CFLAGS_x64REL)
 	@$(LN) bin/lib_cpp.o bin/hex2bin.o -o bin/$(PROG_NAME)-$(@)-$(PROG_VERSION) $(LFLAGS_x64REL)
 	@ln -sf $(PROG_NAME)-$(@)-$(PROG_VERSION) bin/$(PROG_NAME)
 #-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------#
