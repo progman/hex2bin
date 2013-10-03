@@ -5,21 +5,13 @@ APP='./bin/hex2bin';
 # run app
 function run_app()
 {
-	STDIN=$(cat);
-
-
 	if [ "${FLAG_VALGRIND}" != "1" ];
 	then
-		if [ "${STDIN}" != "" ];
-		then
-			STDOUT=$(echo "${STDIN}" | ${APP} "${@}");
-		else
-			STDOUT=$(${APP} "${@}");
-		fi
+		STDOUT=$(cat | ${APP} "${@}");
 	else
 		VAL="valgrind --tool=memcheck --leak-check=yes --leak-check=full --show-reachable=yes --log-file=valgrind.log";
 
-		STDOUT=$(echo "${STDIN}" | ${VAL} ${APP} "${@}");
+		STDOUT=$(cat | ${VAL} ${APP} "${@}");
 
 		echo '--------------------------' >> valgrind.all.log;
 		cat valgrind.log >> valgrind.all.log;
