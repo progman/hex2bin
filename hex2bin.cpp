@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
-#include "submodule/lib_cpp/lib_cpp.h"
+#include "submodule/lib_cpp/lib_cpp.hpp"
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 // convert hex2bin
 void hex2bin()

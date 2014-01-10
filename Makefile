@@ -9,7 +9,7 @@ PROG_URL        := https://github.com/progman/hex2bin.git
 OUT_DIR         := bin
 C_LIST          :=
 CPP_LIST        := hex2bin.cpp submodule/lib_cpp/lib_cpp.cpp
-HEADER_LIST     := submodule/lib_cpp/lib_cpp.h
+HEADER_LIST     := submodule/lib_cpp/lib_cpp.hpp
 
 CFLAGS          :=
 CPPFLAGS        :=
