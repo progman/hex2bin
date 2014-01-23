@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdint.h>
-#include "submodule/lib_cpp/lib_cpp.hpp"
+#include "submodule/libcore.cpp/libcore.hpp"
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 // convert hex2bin
 void hex2bin()
@@ -23,8 +23,8 @@ void hex2bin()
 		ch2 = getchar();
 		if (ch2 == EOF) break;
 
-		if (lib_cpp::hex2bin((uint8_t)ch1, r1) == false) break;
-		if (lib_cpp::hex2bin((uint8_t)ch2, r2) == false) break;
+		if (libcore::hex2bin((uint8_t)ch1, r1) == false) break;
+		if (libcore::hex2bin((uint8_t)ch2, r2) == false) break;
 
 		out = (uint8_t)((r1 << 4) + r2);
 
@@ -42,7 +42,7 @@ void bin2hex()
 		int ch = getchar();
 		if (ch == EOF) break;
 
-		const char *p = lib_cpp::bin2hex((uint8_t)ch);
+		const char *p = libcore::bin2hex((uint8_t)ch);
 		putchar(*p);
 		p++;
 		putchar(*p);
