@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
 	}
 
 
-	printf("%s\t(%s)\n", PROG_FULL_NAME, PROG_URL);
+	printf("%s    %s\n", PROG_FULL_NAME, PROG_URL);
 	printf("example: echo \"68656c6c6f206675636b696e6720776f726c64210a\" | %s [--hex2bin]\n", argv[0]);
 	printf("         echo \"hello world\" | %s --bin2hex\n", argv[0]);
 	printf("\n");
