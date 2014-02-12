@@ -36,8 +36,25 @@ function run_app()
 function test1()
 {
 	TMP1="$(mktemp)";
+	if [ "${?}" != "0" ];
+	then
+		echo "can't make tmp file";
+		exit 1;
+	fi
+
 	TMP2="$(mktemp)";
+	if [ "${?}" != "0" ];
+	then
+		echo "can't make tmp file";
+		exit 1;
+	fi
+
 	TMP3="$(mktemp)";
+	if [ "${?}" != "0" ];
+	then
+		echo "can't make tmp file";
+		exit 1;
+	fi
 
 
 	echo "${MSG}" > "${TMP1}";
