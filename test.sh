@@ -35,6 +35,7 @@ function run_app()
 # test1
 function test1()
 {
+	local TMP1;
 	TMP1="$(mktemp)";
 	if [ "${?}" != "0" ];
 	then
@@ -42,6 +43,7 @@ function test1()
 		exit 1;
 	fi
 
+	local TMP2;
 	TMP2="$(mktemp)";
 	if [ "${?}" != "0" ];
 	then
@@ -49,6 +51,7 @@ function test1()
 		exit 1;
 	fi
 
+	local TMP3;
 	TMP3="$(mktemp)";
 	if [ "${?}" != "0" ];
 	then
@@ -70,8 +73,8 @@ function test1()
 	fi
 
 
-	HASH1="$(md5sum ${TMP1} | awk '{print $1}')";
-	HASH2="$(md5sum ${TMP3} | awk '{print $1}')";
+	local HASH1="$(md5sum ${TMP1} | awk '{print $1}')";
+	local HASH2="$(md5sum ${TMP3} | awk '{print $1}')";
 
 
 	if [ "${HASH1}" != "${HASH2}" ];
@@ -122,7 +125,7 @@ function main()
 	fi
 
 
-	MSG='hello fucking world!';
+	local MSG='hello fucking world!';
 	test1;
 
 
