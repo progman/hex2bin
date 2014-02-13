@@ -8,7 +8,7 @@
 #include "submodule/libcore.cpp/libcore.hpp"
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 // convert hex2bin
-void hex2bin()
+int hex2bin()
 {
 	int ch1, ch2;
 	uint8_t r1, r2, out;
@@ -23,14 +23,22 @@ void hex2bin()
 		ch2 = getchar();
 		if (ch2 == EOF) break;
 
-		if (libcore::hex2bin((uint8_t)ch1, r1) == false) break;
-		if (libcore::hex2bin((uint8_t)ch2, r2) == false) break;
+		if (libcore::hex2bin((uint8_t)ch1, r1) == false)
+		{
+			return -1;
+		}
+		if (libcore::hex2bin((uint8_t)ch2, r2) == false)
+		{
+			return -1;
+		}
 
 		out = (uint8_t)((r1 << 4) + r2);
 
 		putchar(out);
 	}
 	fflush(stdout);
+
+	return 0;
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 // convert bin2hex
@@ -77,7 +85,10 @@ int main(int argc, char *argv[])
 
 	if (flag_hex2bin == true)
 	{
-		hex2bin();
+		if (hex2bin() == -1)
+		{
+			return 1;
+		}
 		return 0;
 	}
 
