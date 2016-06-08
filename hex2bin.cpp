@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
-// 0.0.2
+// 0.0.3
 // Alexey Potehin <gnuplanet@gmail.com>, http://www.gnuplanet.ru/doc/cv
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 #include <stdio.h>
@@ -58,32 +58,42 @@ void bin2hex()
 	fflush(stdout);
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+// convert bin2hex_c
+void bin2hex_c()
+{
+// read from stdin, convert to hex, write to stdout
+
+	bool flag_first = true;
+	for (;;)
+	{
+		int ch = getchar();
+		if (ch == EOF) break;
+
+		const char *p = libcore::bin2hex((uint8_t)ch);
+
+		if (flag_first == false)
+		{
+			putchar(',');
+			putchar(' ');
+		}
+		else
+		{
+			flag_first = false;
+		}
+		putchar('0');
+		putchar('x');
+
+		putchar(*p);
+		p++;
+		putchar(*p);
+	}
+	fflush(stdout);
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 // general function
 int main(int argc, char *argv[])
 {
-	bool flag_hex2bin = false;
-	bool flag_bin2hex = false;
-
-
 	if (argc == 1)
-	{
-		flag_hex2bin = true;
-	}
-	else
-	{
-		if (strcmp(argv[1], "--hex2bin") == 0)
-		{
-			flag_hex2bin = true;
-		}
-
-		if (strcmp(argv[1], "--bin2hex") == 0)
-		{
-			flag_bin2hex = true;
-		}
-	}
-
-
-	if (flag_hex2bin == true)
 	{
 		if (hex2bin() == -1)
 		{
@@ -92,16 +102,31 @@ int main(int argc, char *argv[])
 		return 0;
 	}
 
+	if (strcmp(argv[1], "--hex2bin") == 0)
+	{
+		if (hex2bin() == -1)
+		{
+			return 1;
+		}
+		return 0;
+	}
 
-	if (flag_bin2hex == true)
+	if (strcmp(argv[1], "--bin2hex") == 0)
 	{
 		bin2hex();
 		return 0;
 	}
 
+	if (strcmp(argv[1], "--bin2hex_c") == 0)
+	{
+		bin2hex_c();
+		return 0;
+	}
+
 
 	printf("%s    %s\n", PROG_FULL_NAME, PROG_URL);
-	printf("example: echo \"68656c6c6f206675636b696e6720776f726c64210a\" | %s [--hex2bin]\n", argv[0]);
+	printf("example: cat FILE | %s [ --hex2bin | --bin2hex | --bin2hex_c ]\n", argv[0]);
+	printf("         echo \"68656c6c6f206675636b696e6720776f726c64210a\" | %s [--hex2bin]\n", argv[0]);
 	printf("         echo \"hello world\" | %s --bin2hex\n", argv[0]);
 	printf("\n");
 
